@@ -5,17 +5,17 @@ import groovy.util.GroovyTestCase;
 class BaseTestCase extends GroovyTestCase {
 
   WithMetaClass meta
-  
+
   protected void setUp() throws Exception {
     super.setUp()
     meta = new WithMetaClass()
   }
-  
+
   protected void tearDown() throws Exception {
     super.tearDown();
     meta.unregister()
   }
-  
+
   protected void registerMetaClass(Class clazz) {
     meta.register(clazz)
   }
