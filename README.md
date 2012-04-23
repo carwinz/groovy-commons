@@ -1,4 +1,5 @@
 groovy-commons
 ==============
 
-Common metaClass additions
+Add common functions to String, List, etc via metaClass.
+
