@@ -58,4 +58,12 @@ class ListFunctionsTest extends BaseTestCase {
     public void testFindTillShouldReturnAllItemsUpToAndExcludingTheMatchedElement(){
         assertEquals(1..2, (1..5).findTill { it == 3})
     }
+    
+    public void testAddOnceShouldAddTheItemWhenItDoesNotYetExist(){
+        assertEquals([1], [].addOnce(1))
+    }
+    
+    public void testAddOnceShouldNotAddTheItemWhenItAlreadyExists(){
+        assertEquals([1], [1].addOnce(1))
+    }
 }

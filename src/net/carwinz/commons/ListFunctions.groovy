@@ -19,6 +19,13 @@ class ListFunctions {
         list
       }
     }
+    
+    List.metaClass.addOnce = { obj ->
+        if (!delegate.contains(obj)) {
+            delegate.add(obj)
+        }
+        delegate
+    }
 
     // Grouping
 
