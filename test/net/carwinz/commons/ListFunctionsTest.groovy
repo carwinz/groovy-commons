@@ -54,7 +54,7 @@ class ListFunctionsTest extends BaseTestCase {
         assert ["a","aa","aaa","aaaa"].contiguous({ it.length() })
         assert ["1","2","3","4"].contiguous({ it as int })
     }
-    
+
     public void testFindTillShouldReturnAllItemsUpToAndExcludingTheMatchedElement(){
         assertEquals(1..2, (1..5).findTill { it == 3})
     }
@@ -65,5 +65,17 @@ class ListFunctionsTest extends BaseTestCase {
     
     public void testAddOnceShouldNotAddTheItemWhenItAlreadyExists(){
         assertEquals([1], [1].addOnce(1))
+    }
+    
+    public void testRandomShouldReturnOneOfTheGivenValues(){
+        assertTrue (["a", "b", "c"].contains(["a", "b", "c"].random()))
+    }
+    
+    public void testRandomShouldReturnTheValueWhenThereIsOnlyOneValue(){
+        assertEquals "a", ["a"].random()
+    }
+    
+    public void testRandomShouldReturnNullWhenThereAreNoValues(){
+        assertNull ([].random())
     }
 }
