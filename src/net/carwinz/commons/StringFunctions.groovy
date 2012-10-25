@@ -5,26 +5,25 @@ import java.util.regex.Pattern;
 
 class StringFunctions {
 
-  def init(){
-    String.metaClass.isEmailAddress = {
-      Pattern.compile(".+@.+\\.[a-z]+").matcher(delegate).matches()
-    }
+    def init(){
+        String.metaClass.isEmailAddress = {
+            Pattern.compile(".+@.+\\.[a-z]+").matcher(delegate).matches()
+        }
+        
+        String.metaClass.insertHtmlTags = {
+            delegate.replaceAll("((http|ftp|https):\\/\\/\\S*)", "<a href=\"\$1\">\$1</a>" );
+        }
 
-    String.metaClass.isBlank = {
-      delegate.trim() == ''
-    }
+        String.metaClass.isBlank = {
+            delegate.trim() == ''
+        }
 
-    String.metaClass.isNotBlank = {
-      delegate.trim() != ''
+        String.metaClass.isNotBlank = {
+            delegate.trim() != ''
+        }
+  
+        String.metaClass.random = {
+            delegate.empty ? null : delegate[new Random().nextInt(delegate.size())-1]
+        }
     }
-
-    // A very basic and un-educated attempt to make a singular word plural
-    String.metaClass.pluralise = {
-      if (delegate.endsWith("y")){
-        return delegate.substring(0, delegate.length()-1) + "ies";
-      }
-      return delegate + "s";
-    }
-  }
-
 }
