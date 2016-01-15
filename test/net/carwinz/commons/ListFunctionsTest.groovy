@@ -78,4 +78,8 @@ class ListFunctionsTest extends BaseTestCase {
     public void testRandomShouldReturnNullWhenThereAreNoValues(){
         assertNull ([].random())
     }
+
+    public void testOnlyOrNullShouldReturnNullWhenTheListIsEmpty() {
+	assertNull ([].onlyOrNull())
+    }
 }

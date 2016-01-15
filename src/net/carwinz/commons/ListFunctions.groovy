@@ -23,6 +23,10 @@ class ListFunctions {
                 list
             }
         }
+
+	List.metaClass.onlyOrNull = {
+	    delegate.with { empty ? null : head() }
+	}
     
         List.metaClass.addOnce = { obj ->
             if (!delegate.contains(obj)) {
