@@ -2,7 +2,7 @@ package net.carwinz.commons;
 
 import groovy.util.GroovyTestCase;
 
-class BaseTestCase extends GroovyTestCase {
+abstract class TestHelper extends GroovyTestCase {
 
   WithMetaClass meta
 

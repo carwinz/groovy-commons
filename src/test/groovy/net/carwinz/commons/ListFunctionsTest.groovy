@@ -1,7 +1,7 @@
 package net.carwinz.commons;
 
 
-class ListFunctionsTest extends BaseTestCase {
+class ListFunctionsTest extends TestHelper {
 
     protected void setUp() throws Exception {
         super.setUp()
@@ -68,7 +68,7 @@ class ListFunctionsTest extends BaseTestCase {
     }
     
     public void testRandomShouldReturnOneOfTheGivenValues(){
-        assertTrue (["a", "b", "c"].contains(["a", "b", "c"].random()))
+        assertTrue(["a", "b", "c"].contains(["a", "b", "c"].random()))
     }
     
     public void testRandomShouldReturnTheValueWhenThereIsOnlyOneValue(){
@@ -76,10 +76,23 @@ class ListFunctionsTest extends BaseTestCase {
     }
     
     public void testRandomShouldReturnNullWhenThereAreNoValues(){
-        assertNull ([].random())
+        assertNull([].random())
+    }
+
+    public void testOnlyOrNullShouldReturnTheFirstItemWhenThereIsOnElementInTheList() {
+	assertEquals 1, [1].onlyOrNull()
     }
 
     public void testOnlyOrNullShouldReturnNullWhenTheListIsEmpty() {
-	assertNull ([].onlyOrNull())
+	assertNull([].onlyOrNull())
+    }
+
+    public void testOnlyOrNullShouldThrowErrorWhenThereAreMoreThanTwoElementsInTheList() {
+	try {
+  	    [1, 2].onlyOrNull()
+	    fail("Exception not thrown")
+	} catch (MultipleElementsInListException e) {
+
+	}
     }
 }

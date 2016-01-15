@@ -1,7 +1,7 @@
 package net.carwinz.commons;
 
 
-class DateFunctionsTest extends BaseTestCase {
+class DateFunctionsTest extends TestHelper {
 
     protected void setUp() throws Exception {
         super.setUp()

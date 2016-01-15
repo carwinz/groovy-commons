@@ -24,8 +24,16 @@ class ListFunctions {
             }
         }
 
-	List.metaClass.onlyOrNull = {
-	    delegate.with { empty ? null : head() }
+	List.metaClass.onlyOrNull = { ->
+	    if (delegate.empty) {
+		return null
+	    }
+
+	    if (delegate.size() > 1) {
+		throw new MultipleElementsInListException()
+ 	    }
+
+	    delegate.head() 
 	}
     
         List.metaClass.addOnce = { obj ->

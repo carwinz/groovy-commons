@@ -1,7 +1,7 @@
 package net.carwinz.commons;
 
 
-class StringFunctionsTest extends BaseTestCase {
+class StringFunctionsTest extends TestHelper {
 
     protected void setUp() throws Exception {
         super.setUp();
