@@ -1,11 +1,11 @@
-package net.carwinz.commons
+package com.github.carwinz.commons
 
 class ListFunctions {
 
     def init(){
 
         // Manipulation
-      
+
         List.metaClass.random = {
             delegate.empty ? null : delegate[new Random().nextInt(delegate.size())-1]
         }
@@ -24,18 +24,18 @@ class ListFunctions {
             }
         }
 
-	List.metaClass.onlyOrNull = { ->
-	    if (delegate.empty) {
-		return null
-	    }
+        List.metaClass.onlyOrNull = { ->
+            if (delegate.empty) {
+            return null
+            }
 
-	    if (delegate.size() > 1) {
-		throw new MultipleElementsInListException()
- 	    }
+            if (delegate.size() > 1) {
+            throw new MultipleElementsInListException()
+            }
 
-	    delegate.head() 
-	}
-    
+            delegate.head()
+        }
+
         List.metaClass.addOnce = { obj ->
             if (!delegate.contains(obj)) {
                 delegate.add(obj)
@@ -82,7 +82,9 @@ class ListFunctions {
         // Analysis
 
         List.metaClass.contiguous = { asint = { value -> value } ->
-            delegate.tail().inject(delegate.head(), { previous, current -> (previous && Math.abs(asint(current) - asint(previous)) == 1) ? current : false }) == delegate.last()
+            delegate.tail().inject(delegate.head(), { previous, current ->
+                (previous && Math.abs(asint(current) - asint(previous)) == 1) ? current : false
+            }) == delegate.last()
         }
     }
 }

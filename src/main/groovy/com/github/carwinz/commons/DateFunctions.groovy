@@ -1,4 +1,4 @@
-package net.carwinz.commons
+package com.github.carwinz.commons
 
 import static java.util.Calendar.getInstance as now
 import static java.util.Calendar.DAY_OF_YEAR
@@ -18,7 +18,7 @@ class DateFunctions {
     public static final long ONE_DAY_LONG = 24L * ONE_HOUR_LONG;
 
     def init(){
-      
+
         java.util.Date.metaClass.static.date = { year, month, day  ->
             def cal = now()
             cal.set(YEAR, year)
@@ -38,7 +38,7 @@ class DateFunctions {
             cal.set(MILLISECOND, millisecond)
             cal.time
         }
-    
+
         java.util.Date.metaClass.startOfDay = { ->
             def cal = now()
             cal.time = delegate
@@ -48,7 +48,7 @@ class DateFunctions {
             cal.set MILLISECOND, 0
             cal.time
         }
-  
+
         java.util.Date.metaClass.endOfDay = { ->
             def cal = now()
             cal.time = delegate

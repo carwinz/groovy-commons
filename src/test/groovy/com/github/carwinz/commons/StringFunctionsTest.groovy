@@ -1,4 +1,4 @@
-package net.carwinz.commons;
+package com.github.carwinz.commons;
 
 
 class StringFunctionsTest extends TestHelper {
@@ -46,17 +46,17 @@ class StringFunctionsTest extends TestHelper {
     public void testInsertHtmlTagsShouldDetectAllHttpLinksAndWrapThemInHtmlTags(){
         assertEquals "a <a href=\"http://www.google.com\">http://www.google.com</a> b", "a http://www.google.com b".insertHtmlTags()
     }
-  
+
     public void testRandomShouldReturnOneOfTheGivenValues(){
         assertTrue (["a", "b", "c"].contains("abc".random()))
     }
-    
+
     public void testRandomShouldReturnTheValueWhenThereIsOnlyOneValue(){
         assertEquals "a", "a".random()
     }
-    
+
     public void testRandomShouldReturnNullWhenThereAreNoValues(){
         assertNull "".random()
     }
-    
+
 }

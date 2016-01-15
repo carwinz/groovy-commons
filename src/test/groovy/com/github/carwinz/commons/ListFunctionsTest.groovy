@@ -1,4 +1,4 @@
-package net.carwinz.commons;
+package com.github.carwinz.commons;
 
 
 class ListFunctionsTest extends TestHelper {
@@ -25,7 +25,7 @@ class ListFunctionsTest extends TestHelper {
         def michael = [name:'michael', gender: 'm']
         def amaia = [name:'amaia', gender: 'f']
         def don = [name:'don', gender: 'm']
-        
+
         def expecting = ['f': [amaia], 'm':[michael, don]]
         def result = [michael, don, amaia].toTree("gender")
 
@@ -51,48 +51,50 @@ class ListFunctionsTest extends TestHelper {
     public void testContiguousShouldReturnTrueWhenNumbersAreContiguous() {
         assert [1,2,3,4,5].contiguous()
         assert [5,4,3,2,1].contiguous()
+        assert [5,4,3,2,3,2,1].contiguous()
         assert ["a","aa","aaa","aaaa"].contiguous({ it.length() })
+        assert ["aaaa","aaa","aa", "a"].contiguous({ it.length() })
         assert ["1","2","3","4"].contiguous({ it as int })
     }
 
     public void testFindTillShouldReturnAllItemsUpToAndExcludingTheMatchedElement(){
         assertEquals(1..2, (1..5).findTill { it == 3})
     }
-    
+
     public void testAddOnceShouldAddTheItemWhenItDoesNotYetExist(){
         assertEquals([1], [].addOnce(1))
     }
-    
+
     public void testAddOnceShouldNotAddTheItemWhenItAlreadyExists(){
         assertEquals([1], [1].addOnce(1))
     }
-    
+
     public void testRandomShouldReturnOneOfTheGivenValues(){
         assertTrue(["a", "b", "c"].contains(["a", "b", "c"].random()))
     }
-    
+
     public void testRandomShouldReturnTheValueWhenThereIsOnlyOneValue(){
         assertEquals "a", ["a"].random()
     }
-    
+
     public void testRandomShouldReturnNullWhenThereAreNoValues(){
         assertNull([].random())
     }
 
     public void testOnlyOrNullShouldReturnTheFirstItemWhenThereIsOnElementInTheList() {
-	assertEquals 1, [1].onlyOrNull()
+       assertEquals 1, [1].onlyOrNull()
     }
 
     public void testOnlyOrNullShouldReturnNullWhenTheListIsEmpty() {
-	assertNull([].onlyOrNull())
+       assertNull([].onlyOrNull())
     }
 
     public void testOnlyOrNullShouldThrowErrorWhenThereAreMoreThanTwoElementsInTheList() {
-	try {
-  	    [1, 2].onlyOrNull()
-	    fail("Exception not thrown")
-	} catch (MultipleElementsInListException e) {
-
-	}
+        try {
+            [1, 2].onlyOrNull()
+            fail("Exception not thrown")
+        } catch (MultipleElementsInListException e) {
+            // expected
+        }
     }
 }

@@ -1,4 +1,4 @@
-package net.carwinz.commons
+package com.github.carwinz.commons
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,7 +9,7 @@ class StringFunctions {
         String.metaClass.isEmailAddress = {
             Pattern.compile(".+@.+\\.[a-z]+").matcher(delegate).matches()
         }
-        
+
         String.metaClass.insertHtmlTags = {
             delegate.replaceAll("((http|ftp|https):\\/\\/\\S*)", "<a href=\"\$1\">\$1</a>" );
         }
@@ -21,7 +21,7 @@ class StringFunctions {
         String.metaClass.isNotBlank = {
             delegate.trim() != ''
         }
-  
+
         String.metaClass.random = {
             delegate.empty ? null : delegate[new Random().nextInt(delegate.size())-1]
         }

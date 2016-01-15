@@ -1,4 +1,4 @@
-package net.carwinz.commons
+package com.github.carwinz.commons
 
 class MultipleElementsInListException extends RuntimeException {
 

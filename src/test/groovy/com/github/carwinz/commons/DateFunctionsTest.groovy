@@ -1,4 +1,4 @@
-package net.carwinz.commons;
+package com.github.carwinz.commons;
 
 
 class DateFunctionsTest extends TestHelper {
@@ -13,15 +13,15 @@ class DateFunctionsTest extends TestHelper {
         def date = Date.date(2012, 9, 26)
         Calendar cal = Calendar.getInstance()
         cal.time = date
-        
+
         assertEquals(2012, cal.get(Calendar.YEAR))
         assertEquals(8, cal.get(Calendar.MONTH))
         assertEquals(26, cal.get(Calendar.DAY_OF_MONTH))
     }
-    
+
     public void testShouldCreateDateWithTimeInfo() {
         def date = Date.date(2012, 9, 26, 13, 2, 3, 4)
-        
+
         Calendar cal = Calendar.getInstance()
         cal.time = date
         assertEquals(2012, cal.get(Calendar.YEAR))
@@ -32,10 +32,10 @@ class DateFunctionsTest extends TestHelper {
         assertEquals(3, cal.get(Calendar.SECOND))
         assertEquals(4, cal.get(Calendar.MILLISECOND))
     }
-    
+
     public void testStartOfDayShouldBlankOutAllTimeInfo() {
         def date = Date.date(2012, 9, 26, 13, 2, 3, 4).startOfDay()
-        
+
         Calendar cal = Calendar.getInstance()
         cal.time = date
         assertEquals(2012, cal.get(Calendar.YEAR))
@@ -46,10 +46,10 @@ class DateFunctionsTest extends TestHelper {
         assertEquals(0, cal.get(Calendar.SECOND))
         assertEquals(0, cal.get(Calendar.MILLISECOND))
     }
-    
+
     public void testEndOfDayShouldMoveTimeInfoToTheLastSecondOfTheDay() {
         def date = Date.date(2012, 9, 26, 13, 2, 3, 4).endOfDay()
-                
+
         Calendar cal = Calendar.getInstance()
         cal.time = date
         assertEquals(2012, cal.get(Calendar.YEAR))
