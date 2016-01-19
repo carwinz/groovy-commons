@@ -86,5 +86,10 @@ class ListFunctions {
                 (previous && Math.abs(asint(current) - asint(previous)) == 1) ? current : false
             }) == delegate.last()
         }
+
+        List.metaClass.tap = { closure ->
+            closure(delegate.clone())
+            delegate
+        }
     }
 }

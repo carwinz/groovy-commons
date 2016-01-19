@@ -97,4 +97,14 @@ class ListFunctionsTest extends TestHelper {
             // expected
         }
     }
+
+    public void testTapShouldTapIntoChain() {
+        def calls = 0
+        assertEquals ([1,2], [1,2].tap { calls++ })
+        assertEquals 1, calls
+    }
+
+    public void testTapShouldNotModifyList() {
+        assertEquals ([1,2], [1,2].tap { it << 3 })
+    }
 }

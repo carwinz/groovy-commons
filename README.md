@@ -54,6 +54,15 @@ A closure can be provided to convert each element to a numeric value
 
         assert ["a","aa","aaa","aaaa"].contiguous({ it.length() })
 
+### tap
+
+"Tap into" a call chain
+
+    [1..6]
+        .findAll({ it % 2 == 1})
+        .tap { println "odd numbers are " + it } // prints 1, 3, 5
+        .reverse()  // returns 5, 3, 1
+
 ## Strings
 
 ### isEmailAddress
