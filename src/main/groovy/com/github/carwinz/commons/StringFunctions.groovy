@@ -14,6 +14,10 @@ class StringFunctions {
             delegate.replaceAll("((http|ftp|https):\\/\\/\\S*)", "<a href=\"\$1\">\$1</a>" );
         }
 
+        String.metaClass.insertHtmlTagsIfNotAlreadyWrapped = {
+            delegate.replaceAll("(?<![\\>\"])((http|ftp|https):\\/\\/\\S*)", "<a href=\"\$1\">\$1</a>" );
+        }
+
         String.metaClass.isBlank = {
             delegate.trim() == ''
         }

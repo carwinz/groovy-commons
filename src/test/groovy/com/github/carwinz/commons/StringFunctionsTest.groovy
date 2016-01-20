@@ -47,6 +47,16 @@ class StringFunctionsTest extends TestHelper {
         assertEquals "a <a href=\"http://www.google.com\">http://www.google.com</a> b", "a http://www.google.com b".insertHtmlTags()
     }
 
+    public void testInsertHtmlTagsIfNotAlreadyWrappedShouldDetectAllHttpLinksAndWrapThemInHtmlTags(){
+        assertEquals "a <a href=\"http://www.google.com\">http://www.google.com</a> b",
+            "a http://www.google.com b".insertHtmlTagsIfNotAlreadyWrapped()
+    }
+
+    public void testInsertHtmlTagsIfNotAlreadyWrappedShouldNotWrapAlreadyWrappedLinks(){
+        String str = "a <a href=\"http://www.google.com\">http://www.google.com</a> b"
+        assertEquals str, str.insertHtmlTagsIfNotAlreadyWrapped()
+    }
+
     public void testRandomShouldReturnOneOfTheGivenValues(){
         assertTrue (["a", "b", "c"].contains("abc".random()))
     }
